@@ -1,0 +1,28 @@
+{
+  "name": "CORE-pokemon-battler",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "mocha spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leondelaimy/CORE-pokemon-battler.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leondelaimy/CORE-pokemon-battler/issues"
+  },
+  "homepage": "https://github.com/leondelaimy/CORE-pokemon-battler#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.0.1",
+    "sinon": "^4.4.2"
+  },
+  "dependencies": {
+    "inquirer": "^5.1.0"
+  }
+}
