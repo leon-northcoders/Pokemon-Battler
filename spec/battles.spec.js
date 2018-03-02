@@ -3,7 +3,7 @@ const { Pokemon } = require('../classes/pokemon.js')
 const { Battles } = require('../classes/battles.js')
 const { Trainer } = require('../classes/trainers.js')
 
-describe.only('Battles()', () => {
+describe('Battles()', () => {
     it('Check that two Pokemon fight', () => {
         const pikachu = new Pokemon('Pikachu', 100, 'Electric', 'Pika', 'Thunder Bolt', 8);
         const charmander = new Pokemon('Charmander', 100, 'Fire', 'Charmander', 'Ember', 7);

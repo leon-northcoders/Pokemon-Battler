@@ -5,7 +5,7 @@ class Battles {
     }
 
     fight() {
-
+        
         let defender = this.trainer1.bagpack[0]
         let attacker = this.trainer2.bagpack[0]
 
@@ -65,5 +65,14 @@ class Battles {
         return this.fight(defender, attacker);
     }
 }
+
+// const pikachu = new Pokemon('Pikachu', 100, 'Electric', 'Pika', 'Thunder Bolt', 8);
+// const charmander = new Pokemon('Charmander', 100, 'Fire', 'Charmander', 'Ember', 7);
+// const leon = new Trainer('Leon');
+// leon.addToBagpack(pikachu)
+// const oliver = new Trainer('Oliver');
+// oliver.addToBagpack(charmander)
+// const battle = new Battles(leon, oliver);
+// battle.fight()
 
 module.exports = { Battles };

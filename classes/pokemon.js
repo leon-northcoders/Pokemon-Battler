@@ -9,7 +9,6 @@ class Pokemon {
 
     }
 
-
     talk() {
         console.log(this.sound);
         return this.sound

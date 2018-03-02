@@ -9,7 +9,7 @@ class Trainer {
     // this method will be called mid game
     catch(pokemon) {
         if (pokemon.health <= 15 && Math.floor(Math.random() * 100) <= 30) {
-
+            
         }
         console.log()
     }
@@ -30,6 +30,7 @@ class Trainer {
     }
 
     addToBagpack(pokemon) {
+        
         if (this.pokeCount <= 5) {
             this.bagpack[this.pokeCount] = pokemon
             this.pokeCount++;

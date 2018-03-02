@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const { Pokemon } = require('../classes/pokemon.js')
 const { Trainer } = require('../classes/trainers.js')
 
-describe('Trainer()', () => {
+describe.only('Trainer()', () => {
     it('Check that Pokemon has its own name property', () => {
         const leon = new Trainer();
         expect(leon.hasOwnProperty('name')).to.be.true;
