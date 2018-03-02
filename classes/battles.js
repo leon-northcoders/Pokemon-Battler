@@ -1,54 +1,69 @@
-function Battles(pokemon1, pokemon2) {
-    
-    Battles.prototype.fight = function(){
-       if(pokemon1.health === 100 && pokemon2.health === 100) console.log(`${pokemon1.name} VS ${pokemon2.name}\n\n Let the battle begin!\n`)
-        // base case
-        if(pokemon1.health <= 0) {
-            console.log(`${pokemon1.name} just FAINTED!`)
-            console.log(`${pokemon2.name} Wins! ${pokemon2.talk().toUpperCase()}!!!`)
-            return `${pokemon1.name} just FAINTED!`
-    }        
-        if(pokemon2.health <= 0) {
-            console.log(`${pokemon2.name} just FAINTED!`)
-            console.log(`${pokemon1.name} Wins! ${pokemon1.talk().toUpperCase()}!!!`)
-            return `${pokemon2.name} just FAINTED!`
+class Battles {
+    constructor(trainer1, trainer2) {
+        this.trainer2 = trainer2
+        this.trainer1 = trainer1
     }
-        
 
-        //recursive step
-        if(pokemon1.type === 'Fire' && pokemon2.type === 'Grass') 
-        pokemon1.attackDamage *= 0.75 
-        else if(pokemon1.type === 'Fire' && pokemon2.type === 'Water') 
-        pokemon2.attackDamage *= 1.25 
+    fight() {
 
-        if(pokemon1.type === 'Grass' && pokemon2.type === 'Water') 
-        pokemon1.attackDamage *= 0.75 
-        else if(pokemon1.type === 'Grass' && pokemon2.type === 'Fire') 
-        pokemon2.attackDamage *= 1.25 
+        let defender = this.trainer1.bagpack[0]
+        let attacker = this.trainer2.bagpack[0]
 
-        if(pokemon1.type === 'Water' && pokemon2.type === 'Fire') 
-        pokemon1.attackDamage *= 0.75 
-        else if(pokemon1.type === 'Water' && pokemon2.type === 'Grass') 
-        pokemon2.attackDamage *= 1.25 
+        // introduction to game
+        if (defender.health === 100 && attacker.health === 100) console.log(`${this.trainer1.name} VS ${this.trainer2.name}\n${this.trainer1.name} releases ${defender.name}, ${this.trainer2.name} releases ${attacker.name}\n\n\n Let the battle begin!\n\n\n`)
+
+        // game logic
+        if (defender.type === 'Fire' && attacker.type === 'Grass')
+            defender.attackDamage *= 0.75
+        else if (defender.type === 'Fire' && attacker.type === 'Water')
+            attacker.attackDamage *= 1.25
+
+        if (defender.type === 'Grass' && attacker.type === 'Water')
+            defender.attackDamage *= 0.75
+        else if (defender.type === 'Grass' && attacker.type === 'Fire')
+            attacker.attackDamage *= 1.25
+
+        if (defender.type === 'Water' && attacker.type === 'Fire')
+            defender.attackDamage *= 0.75
+        else if (defender.type === 'Water' && attacker.type === 'Grass')
+            attacker.attackDamage *= 1.25
 
 
-        // // Random Critical Hit [will break tests, as expected]
+        // // Random Critical Hit [will break tests, as expected, USE WITH CARE]
         // let randomCritical = (Math.floor(Math.random() * 100))
-        // if (randomCritical <= 30) pokemon1.attackDamage *= 3;
+        // if (randomCritical <= 30) trainer1.attackDamage *= 3;
         // randomCritical = (Math.floor(Math.random() * 100))
-        // if (randomCritical <= 30) pokemon2.attackDamage *= 3;
-
-        pokemon1.health -= pokemon2.attackDamage;
-        pokemon2.useYourMoves()
-        console.log(`${pokemon1.name}'s health is now: ${pokemon1.health}\n`)
-        pokemon2.health -= pokemon1.attackDamage;
-        pokemon1.useYourMoves()
-        console.log(`${pokemon2.name}'s health is now: ${pokemon2.health}\n`)
+        // if (randomCritical <= 30) trainer2.attackDamage *= 3;
 
 
-
-        return this.fight(pokemon1, pokemon2);
+        defender.health -= Math.round(attacker.attackDamage);
+        attacker.useYourMoves()
+        // base case for defender
+        if (defender.health <= 0) {
+            defender.health = 0
+            console.log(`${defender.name} just FAINTED!`)
+            console.log(`${attacker.name} Wins! ${attacker.talk().toUpperCase()}!!!`)
+            return `${defender.name} just FAINTED!`
         }
+        console.log(`${defender.name}'s health is now: ${defender.health}%\n`)
+
+
+        attacker.health -= Math.round(defender.attackDamage);
+        defender.useYourMoves()
+        // base case for attacker
+        if (attacker.health <= 0) {
+            attacker.health = 0
+            console.log(`${attacker.name} just FAINTED!`)
+            console.log(`${defender.name} Wins! ${defender.talk().toUpperCase()}!!!`)
+            return `${attacker.name} just FAINTED!`
+
+        }
+        console.log(`${attacker.name}'s health is now: ${attacker.health}%\n`)
+
+
+        // recursive step
+        return this.fight(defender, attacker);
+    }
 }
 
-module.exports = {Battles};
+module.exports = { Battles };

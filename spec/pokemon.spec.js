@@ -1,7 +1,7 @@
-const {expect} = require('chai');
-const {Pokemon} = require('../classes/pokemon')
+const { expect } = require('chai');
+const { Pokemon } = require('../classes/pokemon')
 
-describe('Pokemon()', () =>{
+describe('Pokemon()', () => {
     it('Check that Pokemon has its own variety of properties', () => {
         const pikachu = new Pokemon();
         expect(pikachu.hasOwnProperty('name')).to.be.true;
