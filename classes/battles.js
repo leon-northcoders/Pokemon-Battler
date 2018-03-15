@@ -4,6 +4,18 @@ class Battles {
         this.trainer1 = trainer1
     }
 
+    coinFlip(){
+            let attacker;
+            let defender;
+             // Clip a coin at the start to decide who attacks first
+            if (Math.random() <= 0.5) attacker = this.trainer2.bagpack[0] 
+            else attacker = this.trainer2.bagpack[0];
+            // console.log(Math.random())
+
+            if (attacker === this.trainer1.bagpack[0]) defender = this.trainer2.bagpack[0] 
+            else defender = this.trainer1.bagpack[0]
+        }
+
     fight() {
         
         let defender = this.trainer1.bagpack[0]
@@ -35,7 +47,7 @@ class Battles {
         // randomCritical = (Math.floor(Math.random() * 100))
         // if (randomCritical <= 30) trainer2.attackDamage *= 3;
 
-
+        
         defender.health -= Math.round(attacker.attackDamage);
         attacker.useYourMoves()
         // base case for defender

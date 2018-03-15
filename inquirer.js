@@ -2,7 +2,6 @@ var inquirer = require('inquirer')
 const { Pokemon } = require('../CORE-pokemon-battler/classes/pokemon')
 const { Battles } = require('../CORE-pokemon-battler/classes/battles')
 const { Trainer } = require('../CORE-pokemon-battler/classes/trainers')
-// const { pokeDex } = require('../CORE-pokemon-battler/classes/pokedex')
 
 let firstTrainer;
 let secondTrainer;
@@ -32,7 +31,7 @@ function trainer2Name(trainer2){
     if(pokemon['Pokemon'] === "Charmander") firstTrainer.addToBagpack(charmander)
     if(pokemon['Pokemon'] === "Dragonite") firstTrainer.addToBagpack(dragonite)
     if(pokemon['Pokemon'] === "Squirtle") firstTrainer.addToBagpack(squirtle)
-    if(pokemon['Pokemon'] === "Bulbasur") firstTrainer.addToBagpack(bulbasaur)
+    if(pokemon['Pokemon'] === "Bulbasaur") firstTrainer.addToBagpack(bulbasaur)
     if(pokemon['Pokemon'] === "Mewtwo") firstTrainer.addToBagpack(mewTwo)
  }
 
@@ -48,7 +47,7 @@ function trainer2Name(trainer2){
     if(pokemon['Pokemon'] === "Charmander") secondTrainer.addToBagpack(charmander)
     if(pokemon['Pokemon'] === "Dragonite") secondTrainer.addToBagpack(dragonite)
     if(pokemon['Pokemon'] === "Squirtle") secondTrainer.addToBagpack(squirtle)
-    if(pokemon['Pokemon'] === "Bulbasur") secondTrainer.addToBagpack(bulbasaur)
+    if(pokemon['Pokemon'] === "Bulbasaur") secondTrainer.addToBagpack(bulbasaur)
     if(pokemon['Pokemon'] === "Mewtwo") secondTrainer.addToBagpack(mewTwo)
 
  }
