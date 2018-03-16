@@ -1,5 +1,5 @@
 var inquirer = require('inquirer')
-const { Pokemon } = require('../CORE-pokemon-battler/classes/pokemon')
+const { Pokemon, Fire, Water, Grass } = require('../CORE-pokemon-battler/classes/pokemon')
 const { Battles } = require('../CORE-pokemon-battler/classes/battles')
 const { Trainer } = require('../CORE-pokemon-battler/classes/trainers')
 
@@ -20,38 +20,61 @@ function trainer2Name(trainer2){
  };
 
  function pickPokemon1(pokemon){
+    const charmander = new Fire('Charmander', 100, 'Fire', 'Charmander', 'Ember', 7, {'Ember' : 4, 'Growl': 2, 'Dragon Rage': 6, 'FlameThrower': 5});
+    const squirtle = new Water('Squirtle', 100, 'Water', 'Squirtle', 'Torrent', 7, {'Torrent' : 4, 'Growl': 2, 'Bubble': 6, 'Tackle': 5});
+    const bulbasaur = new Grass('Bulbasaur', 100, 'Grass', 'Bulbasaur', 'Over Grow', 7,
+    {'Over Grow' : 4, 'Growl': 2, 'Razor Leaf': 6, 'Vine Lash': 5});
+    
     const pikachu = new Pokemon('Pikachu', 100, 'Electric', 'Pika', 'Thunder Bolt', 8);
-    const charmander = new Pokemon('Charmander', 100, 'Fire', 'Charmander', 'Ember', 7);
     const dragonite = new Pokemon('Dragonite', 100, 'Flying', 'Dragonite', 'Inner Focus', 10)
-    const squirtle = new Pokemon('Squirtle', 100, 'Water', 'Squirtle', 'Torrent', 7);
-    const bulbasaur = new Pokemon('Bulbasaur', 100, 'Grass', 'Bulbasaur', 'Over Grow', 7);
     const mewTwo = new Pokemon('Mewtwo', 200, 'Psychic', 'Droid Noises', 'Pressure', 75)
     
-    if(pokemon['Pokemon'] === "Pikachu") firstTrainer.addToBagpack(pikachu)
+    
     if(pokemon['Pokemon'] === "Charmander") firstTrainer.addToBagpack(charmander)
-    if(pokemon['Pokemon'] === "Dragonite") firstTrainer.addToBagpack(dragonite)
     if(pokemon['Pokemon'] === "Squirtle") firstTrainer.addToBagpack(squirtle)
     if(pokemon['Pokemon'] === "Bulbasaur") firstTrainer.addToBagpack(bulbasaur)
-    if(pokemon['Pokemon'] === "Mewtwo") firstTrainer.addToBagpack(mewTwo)
+    // if(pokemon['Pokemon'] === "Pikachu") firstTrainer.addToBagpack(pikachu)
+    // if(pokemon['Pokemon'] === "Dragonite") firstTrainer.addToBagpack(dragonite)
+    // if(pokemon['Pokemon'] === "Mewtwo") firstTrainer.addToBagpack(mewTwo)
  }
 
  function pickPokemon2(pokemon){
+    const charmander = new Fire('Charmander', 100, 'Fire', 'Charmander', 'Ember', 7, {'Ember' : 4, 'Growl': 2, 'Dragon Rage': 4, 'FlameThrower': 5});
+    const squirtle = new Water('Squirtle', 100, 'Water', 'Squirtle', 'Torrent', 7, {'Torrent' : 4, 'Growl': 2, 'Bubble': 4, 'Tackle': 5});
+    const bulbasaur = new Grass('Bulbasaur', 100, 'Grass', 'Bulbasaur', 'Over Grow', 7,
+    {'Over Grow' : 4, 'Growl': 2, 'Razor Leaf': 4, 'Vine Lash': 5});
+    
     const pikachu = new Pokemon('Pikachu', 100, 'Electric', 'Pika', 'Thunder Bolt', 8);
-    const charmander = new Pokemon('Charmander', 100, 'Fire', 'Charmander', 'Ember', 7);
     const dragonite = new Pokemon('Dragonite', 100, 'Flying', 'Dragonite', 'Inner Focus', 10)
-    const squirtle = new Pokemon('Squirtle', 100, 'Water', 'Squirtle', 'Torrent', 7);
-    const bulbasaur = new Pokemon('Bulbasaur', 100, 'Grass', 'Bulbasaur', 'Over Grow', 7);
     const mewTwo = new Pokemon('Mewtwo', 200, 'Psychic', 'Droid Noises', 'Pressure', 75)
 
-    if(pokemon['Pokemon'] === "Pikachu") secondTrainer.addToBagpack(pikachu)
+    
     if(pokemon['Pokemon'] === "Charmander") secondTrainer.addToBagpack(charmander)
-    if(pokemon['Pokemon'] === "Dragonite") secondTrainer.addToBagpack(dragonite)
     if(pokemon['Pokemon'] === "Squirtle") secondTrainer.addToBagpack(squirtle)
     if(pokemon['Pokemon'] === "Bulbasaur") secondTrainer.addToBagpack(bulbasaur)
-    if(pokemon['Pokemon'] === "Mewtwo") secondTrainer.addToBagpack(mewTwo)
+    // if(pokemon['Pokemon'] === "Pikachu") secondTrainer.addToBagpack(pikachu)
+    // if(pokemon['Pokemon'] === "Dragonite") secondTrainer.addToBagpack(dragonite)
+    // if(pokemon['Pokemon'] === "Mewtwo") secondTrainer.addToBagpack(mewTwo)
 
  }
- 
+
+ function coinFlip(){
+            
+    // Clip a coin at the start to decide who attacks first
+   (Math.random() <= 0.5) ? console.log(`Coin flipper, you are the defending trainer this time round!`) : console.log(`Coin flipper, you are the attacking trainer this time round!`) ;
+  
+}
+
+let coinFlipQuestion = [
+    {
+        type: "list",
+        name: "coinFlip",
+        message: "Who's gonna go first?",
+        choices: [
+        "Flip a coin"
+        ]
+    }
+]; 
 
 let trainer1Question = [
     { 
@@ -73,12 +96,12 @@ let pokemonDecesion1 = [
         name: "Pokemon",
         message: "Which Pokemon would you like to use?",
         choices: [
-          "Pikachu",
+        //   "Pikachu",
           "Charmander",
-          "Dragonite",
+        //   "Dragonite",
           "Squirtle",
           "Bulbasaur",
-          "Mewtwo"
+        //   "Mewtwo"
          ]
     }
 ]; 
@@ -89,17 +112,20 @@ let pokemonDecesion2 = [
         name: "Pokemon",
         message: "Which Pokemon would you like to use?",
         choices: [
-          "Pikachu",
+        //   "Pikachu",
           "Charmander",
-          "Dragonite",
+        //   "Dragonite",
           "Squirtle",
           "Bulbasaur",
-          "Mewtwo"
+        //   "Mewtwo"
          ]
     }
 ];   
     
-inquirer.prompt(trainer1Question).then(trainer1Name)
+inquirer.prompt(coinFlipQuestion).then(coinFlip)
+    .then(() => {
+        return inquirer.prompt(trainer1Question).then(trainer1Name)    
+    })
     .then(() => {
         return inquirer.prompt(pokemonDecesion1).then(pickPokemon1)    
     })

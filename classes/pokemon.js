@@ -1,11 +1,13 @@
+var colour = require('colour')
 class Pokemon {
-    constructor(name, health = 100, type = 'Normal', sound, move, attackDamage) {
+    constructor(name, health = 100, type = 'Normal', sound, move, attackDamage, moves = {}) {
         this.name = name;
         this.health = health;
         this.type = type;
         this.sound = sound;
         this.move = move;
         this.attackDamage = attackDamage;
+        this.moves = moves
 
     }
 
@@ -14,11 +16,38 @@ class Pokemon {
         return this.sound
     }
 
-    useYourMoves() {
-        console.log(`${this.name} uses his ${this.move.toUpperCase()}!`)
-        return `${this.name} uses his ${this.move.toUpperCase()}!`;
+    useYourMove(move = this.move) {
+        console.log(`${this.name} uses his ${move.toUpperCase()}!`)
+        return `${this.name} uses his ${move.toUpperCase()}!`;
+    }
+
+    getMoves() {
+        return this.moves;
     }
 }
 
+class Fire extends Pokemon {
+    constructor(...args){
+        super(...args)
+        this.strength = 'Grass';
+        this.weakness = 'Water';
+    }
+}
 
-module.exports = { Pokemon }
+class Water extends Pokemon {
+    constructor(...args){
+        super(...args)
+        this.strength = 'Fire';
+        this.weakness = 'Grass';
+    }
+}
+
+class Grass extends Pokemon {
+    constructor(...args){
+        super(...args)
+        this.strength = 'Water';
+        this.weakness = 'Fire';
+    }
+}
+
+module.exports = { Pokemon, Fire, Water, Grass }

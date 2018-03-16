@@ -37,7 +37,6 @@ class Trainer {
         }
         return `No more Pokemon allowed! Bagpack is full.`;
     }
-
 }
 
 
