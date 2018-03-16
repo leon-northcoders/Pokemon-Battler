@@ -1,5 +1,7 @@
-var inquirer = require('inquirer')
-const { Pokemon, Fire, Water, Grass } = require('../CORE-pokemon-battler/classes/pokemon')
+const inquirer = require('inquirer')
+const player = require('play-sound')(opts = {})
+const {exec} = require('child_process')
+const { Pokemon, Fire, Water, Grass, Electric, Psychic, Flying } = require('../CORE-pokemon-battler/classes/pokemon')
 const { Battles } = require('../CORE-pokemon-battler/classes/battles')
 const { Trainer } = require('../CORE-pokemon-battler/classes/trainers')
 
@@ -19,42 +21,59 @@ function trainer2Name(trainer2){
     return;
  };
 
- function pickPokemon1(pokemon){
-    const charmander = new Fire('Charmander', 100, 'Fire', 'Charmander', 'Ember', 7, {'Ember' : 4, 'Growl': 2, 'Dragon Rage': 6, 'FlameThrower': 5});
-    const squirtle = new Water('Squirtle', 100, 'Water', 'Squirtle', 'Torrent', 7, {'Torrent' : 4, 'Growl': 2, 'Bubble': 6, 'Tackle': 5});
+ function pickPokemon1(pokemon){ 
+    const charmander = new Fire('Charmander', 100, 'Fire', 'Charmander', 'Ember', 7, {'Ember' : 6, 'Growl': 4, 'Dragon Rage': 9, 'FlameThrower': 8});
+    const squirtle = new Water('Squirtle', 100, 'Water', 'Squirtle', 'Torrent', 7, {'Torrent' : 6, 'Growl': 4, 'Bubble': 9, 'Tackle': 8});
     const bulbasaur = new Grass('Bulbasaur', 100, 'Grass', 'Bulbasaur', 'Over Grow', 7,
-    {'Over Grow' : 4, 'Growl': 2, 'Razor Leaf': 6, 'Vine Lash': 5});
+    {'Over Grow' : 6, 'Growl': 4, 'Razor Leaf': 9, 'Vine Lash': 7});
     
-    const pikachu = new Pokemon('Pikachu', 100, 'Electric', 'Pika', 'Thunder Bolt', 8);
-    const dragonite = new Pokemon('Dragonite', 100, 'Flying', 'Dragonite', 'Inner Focus', 10)
-    const mewTwo = new Pokemon('Mewtwo', 200, 'Psychic', 'Droid Noises', 'Pressure', 75)
+    const pikachu = new Electric('Pikachu', 100, 'Electric', 'Pika', 'Thunder Bolt', 8, {'Thunder Shock' : 6, 'Thunderbolt': 8, 'Agility': 1, 'Quick Attack': 4});
+    const eevee = new Pokemon('Eevee', 100, '', 'Eevee', 'Captivate', 12, {'Charm' : 4, 'Captivate': 7, 'Flail': 6, 'Yawn': 3})
+    const dragonite = new Flying('Dragonite', 100, 'Flying', 'Dragonite', 'Inner Focus', 10, {'Dragon tail' : 9, 'Outrage': 13, 'Hyperbeam': 11, 'Inner Focus': 10})
+    const snorlax = new Pokemon('Snorlax', 100, '', 'zzZ', 'Body Slam', 7, {'Body Slam' : 16, 'Rest': 2, 'Snore': 1, 'Sleep Talk': 3})
+
+    const mewTwo = new Psychic('Mewtwo', 200, 'Psychic', 'Droid Noises', 'Pressure', 75, {'Laser Focus' : 25, 'Psywave': 50, 'Confusion': 75, 'Pressure': 35})
     
-    
+    // console.log(pokemon) --> {Pokemon : "Charmander"}
     if(pokemon['Pokemon'] === "Charmander") firstTrainer.addToBagpack(charmander)
     if(pokemon['Pokemon'] === "Squirtle") firstTrainer.addToBagpack(squirtle)
     if(pokemon['Pokemon'] === "Bulbasaur") firstTrainer.addToBagpack(bulbasaur)
-    // if(pokemon['Pokemon'] === "Pikachu") firstTrainer.addToBagpack(pikachu)
-    // if(pokemon['Pokemon'] === "Dragonite") firstTrainer.addToBagpack(dragonite)
-    // if(pokemon['Pokemon'] === "Mewtwo") firstTrainer.addToBagpack(mewTwo)
+    if(pokemon['Pokemon'] === "Pikachu") firstTrainer.addToBagpack(pikachu)
+    if(pokemon['Pokemon'] === "Eevee") firstTrainer.addToBagpack(eevee)
+    if(pokemon['Pokemon'] === "Dragonite") firstTrainer.addToBagpack(dragonite)
+    if(pokemon['Pokemon'] === "Snorlax") firstTrainer.addToBagpack(snorlax)
+
+    if(pokemon['Pokemon'] === "Mewtwo") firstTrainer.addToBagpack(mewTwo)
+    
+    exec(`pokemon ${pokemon['Pokemon']}`)
+    
  }
 
  function pickPokemon2(pokemon){
-    const charmander = new Fire('Charmander', 100, 'Fire', 'Charmander', 'Ember', 7, {'Ember' : 4, 'Growl': 2, 'Dragon Rage': 4, 'FlameThrower': 5});
-    const squirtle = new Water('Squirtle', 100, 'Water', 'Squirtle', 'Torrent', 7, {'Torrent' : 4, 'Growl': 2, 'Bubble': 4, 'Tackle': 5});
+    const charmander = new Fire('Charmander', 100, 'Fire', 'Charmander', 'Ember', 7, {'Ember' : 6, 'Growl': 4, 'Dragon Rage': 9, 'FlameThrower': 8});
+    const squirtle = new Water('Squirtle', 100, 'Water', 'Squirtle', 'Torrent', 7, {'Torrent' : 6, 'Growl': 4, 'Bubble': 9, 'Tackle': 8});
     const bulbasaur = new Grass('Bulbasaur', 100, 'Grass', 'Bulbasaur', 'Over Grow', 7,
-    {'Over Grow' : 4, 'Growl': 2, 'Razor Leaf': 4, 'Vine Lash': 5});
+    {'Over Grow' : 6, 'Growl': 4, 'Razor Leaf': 9, 'Vine Lash': 7});
     
-    const pikachu = new Pokemon('Pikachu', 100, 'Electric', 'Pika', 'Thunder Bolt', 8);
-    const dragonite = new Pokemon('Dragonite', 100, 'Flying', 'Dragonite', 'Inner Focus', 10)
-    const mewTwo = new Pokemon('Mewtwo', 200, 'Psychic', 'Droid Noises', 'Pressure', 75)
+    const pikachu = new Electric('Pikachu', 100, 'Electric', 'Pika', 'Thunder Bolt', 8, {'Thunder Shock' : 6, 'Thunderbolt': 8, 'Agility': 1, 'Quick Attack': 4});
+    const eevee = new Pokemon('Eevee', 100, '', 'Eevee', 'Captivate', 12, {'Charm' : 4, 'Captivate': 7, 'Flail': 6, 'Yawn': 3})
+    const dragonite = new Flying('Dragonite', 100, 'Flying', 'Dragonite', 'Inner Focus', 10, {'Dragon tail' : 9, 'Outrage': 13, 'Hyperbeam': 11, 'Inner Focus': 10})
+    const snorlax = new Pokemon('Snorlax', 100, '', 'zzZ', 'Body Slam', 12, {'Body Slam' : 16, 'Rest': 2, 'Snore': 1, 'Sleep Talk': 3})
+
+    const mewTwo = new Psychic('Mewtwo', 200, 'Psychic', 'Droid Noises', 'Pressure', 75, {'Laser Focus' : 25, 'Psywave': 50, 'Confusion': 75, 'Pressure': 35})
 
     
     if(pokemon['Pokemon'] === "Charmander") secondTrainer.addToBagpack(charmander)
     if(pokemon['Pokemon'] === "Squirtle") secondTrainer.addToBagpack(squirtle)
     if(pokemon['Pokemon'] === "Bulbasaur") secondTrainer.addToBagpack(bulbasaur)
-    // if(pokemon['Pokemon'] === "Pikachu") secondTrainer.addToBagpack(pikachu)
-    // if(pokemon['Pokemon'] === "Dragonite") secondTrainer.addToBagpack(dragonite)
-    // if(pokemon['Pokemon'] === "Mewtwo") secondTrainer.addToBagpack(mewTwo)
+    if(pokemon['Pokemon'] === "Pikachu") secondTrainer.addToBagpack(pikachu)
+    if(pokemon['Pokemon'] === "Eevee") secondTrainer.addToBagpack(eevee)
+    if(pokemon['Pokemon'] === "Dragonite") secondTrainer.addToBagpack(dragonite)
+    if(pokemon['Pokemon'] === "Snorlax") secondTrainer.addToBagpack(snorlax)
+
+    if(pokemon['Pokemon'] === "Mewtwo") secondTrainer.addToBagpack(mewTwo)
+
+    exec(`pokemon ${pokemon['Pokemon']}`)
 
  }
 
@@ -96,12 +115,14 @@ let pokemonDecesion1 = [
         name: "Pokemon",
         message: "Which Pokemon would you like to use?",
         choices: [
-        //   "Pikachu",
           "Charmander",
-        //   "Dragonite",
           "Squirtle",
           "Bulbasaur",
-        //   "Mewtwo"
+          "Pikachu",
+          "Eevee",
+          "Dragonite",
+          "Snorlax",
+          "Mewtwo"
          ]
     }
 ]; 
@@ -112,21 +133,45 @@ let pokemonDecesion2 = [
         name: "Pokemon",
         message: "Which Pokemon would you like to use?",
         choices: [
-        //   "Pikachu",
-          "Charmander",
-        //   "Dragonite",
-          "Squirtle",
-          "Bulbasaur",
-        //   "Mewtwo"
+            "Charmander",
+            "Squirtle",
+            "Bulbasaur",
+            "Pikachu",
+            "Eevee",
+            "Dragonite",
+            "Snorlax",
+            "Mewtwo"
          ]
     }
-];   
+]; 
+
+exec(`pokemon --clear`)
+
+const audio = player.play('./mp3s/Opening-Theme.mp3', function(err){
+    if (err) throw err
+  })
+
+console.log(`\n                                                                                 
+                                                          @@@                                                
+                                                        @@@                                                    
+                   @@@@@@               @@@   @@       @           @@@@  @@@                                 
+             @@@@@@@@@@@@@@@           @@@@  @@@@@    @@@@@@@     @@@@@ @@@@         @@@@@@                  
+            @@@@@@@@@@@@@@@@@          @@@@@@@@@@   @@@   @@@     @@@@@ @@@@          @@@@@   @@@@@          
+             @@@@@@@@@    @@@          %@@@@@@@    @@@   @@@  @@ @@@@@@@@@@@    @@@@   @@@@@  @@@@           
+                 @@@@@@   @@@   @@@@@@  @@@@@      @@@@ @@@@@@@  @@@@@@@@@@@ @@@@@@@@@  @@@@ @@@@            
+                 @@@@@  @@@  @@@@@@ @@ @@@@@@@@@  @@@@@@@@@@@    @@@@  @ @@@ @@@    @@@ @@@@ @@@@            
+                  @@@@@@@@   @@@@    @@@ @@@  @@@@@@ @@@@@@      @@@@     @@ @@@@@@@@@@ @@@@@@@             
+                   @@@@@@    @@@@@@@@@@  @@@     @@@@@@@         @@@      @@ @@@@@@@@@ @@ @@@@@              
+                    @@@@@     @@@@@@@@  @@@@         @@@                  @@@        @@@@ @@@@@              
+                     @@@@        @@                                                  @@@  @@@@               
+                      @@@@                                                                @@@  \n\n\n`)
     
+
 inquirer.prompt(coinFlipQuestion).then(coinFlip)
     .then(() => {
         return inquirer.prompt(trainer1Question).then(trainer1Name)    
     })
-    .then(() => {
+    .then(() => {  
         return inquirer.prompt(pokemonDecesion1).then(pickPokemon1)    
     })
     .then(() => {
@@ -136,12 +181,8 @@ inquirer.prompt(coinFlipQuestion).then(coinFlip)
         return inquirer.prompt(pokemonDecesion2).then(pickPokemon2)
     })
     .then(() => {
+        audio.kill()
         const battle = new Battles(firstTrainer, secondTrainer);
         return battle.fight()
     })
-    
-    
-    
-
-// const secondTrainer = new Trainer(trainer2.trainer2name);
 

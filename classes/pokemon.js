@@ -50,4 +50,37 @@ class Grass extends Pokemon {
     }
 }
 
-module.exports = { Pokemon, Fire, Water, Grass }
+class Electric extends Pokemon {
+    constructor(...args){
+        super(...args)
+        this.strength = '';
+        this.weakness = '';
+    }
+}
+
+class Flying extends Pokemon {
+    constructor(...args){
+        super(...args)
+        this.strength = '';
+        this.weakness = '';
+    }
+}
+
+class Ground extends Pokemon {
+    constructor(...args){
+        super(...args)
+        this.strength = '';
+        this.weakness = '';
+    }
+}
+
+class Psychic extends Pokemon {
+    constructor(...args){
+        super(...args)
+        this.strength = '';
+        this.weakness = '';
+    }
+}
+
+
+module.exports = { Pokemon, Fire, Water, Grass, Electric, Psychic, Flying }

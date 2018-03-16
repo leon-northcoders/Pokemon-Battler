@@ -5,9 +5,7 @@
   "main": ".eslintrc.js",
   "scripts": {
     "test": "mocha spec",
-    "charmander": "pokemon charmander && node inquirer.js",
-    "squirtle": "pokemon squirtle && node inquirer.js",
-    "bulbasaur": "pokemon bulbasaur && node inquirer.js"
+    "game": "node inquirer.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +25,8 @@
   },
   "dependencies": {
     "colour": "^0.7.1",
-    "inquirer": "^5.1.0"
+    "inquirer": "^5.1.0",
+    "play-sound": "^1.1.2",
+    "xcode-node": "^1.0.2"
   }
 }
