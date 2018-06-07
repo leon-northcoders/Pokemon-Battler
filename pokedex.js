@@ -1,4 +1,4 @@
-const { Pokemon } = require('../CORE-pokemon-battler/classes/pokemon')
+const { Pokemon } = require('./classes/pokemon')
 
 
 const pikachu = new Pokemon('Pikachu', 100, 'Electric', 'Pika', 'Thunder Bolt', 8);

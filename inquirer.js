@@ -1,9 +1,9 @@
 const inquirer = require('inquirer')
 const player = require('play-sound')(opts = {})
 const {exec} = require('child_process')
-const { Pokemon, Fire, Water, Grass, Electric, Psychic, Flying } = require('../CORE-pokemon-battler/classes/pokemon')
-const { Battles } = require('../CORE-pokemon-battler/classes/battles')
-const { Trainer } = require('../CORE-pokemon-battler/classes/trainers')
+const { Pokemon, Fire, Water, Grass, Electric, Psychic, Flying } = require('./classes/pokemon')
+const { Battles } = require('./classes/battles')
+const { Trainer } = require('./classes/trainers')
 
 let firstTrainer;
 let secondTrainer;
