@@ -6,7 +6,6 @@ Terminal Pokemon battler
 This application was built with JavaScript and uses:
 * [Node.js](https://nodejs.org/en/) - JavaScript run-time environment
 * [Inquirer](https://www.npmjs.com/package/inquirer) - A collection of common interactive command line user interfaces
-* [Pokemon-Terminal](https://github.com/LazoCoder/Pokemon-Terminal) - Apply pokemon themes to your terminal
 * [Colour](https://www.npmjs.com/package/colour) - Extends available colours for terminal text
 * [Play-sound](https://www.npmjs.com/package/play-sound) - Play sounds by shelling out to one of the available audio players
 
@@ -22,6 +21,23 @@ git clone  https://github.com/leondelaimy/Pokemon-Battler.git
 ```
 npm i
 ```
+
+## Pokemon Themes
+
+In order to change the terminal theme you must first install [Pokemon-Terminal](https://github.com/LazoCoder/Pokemon-Terminal)
+1. To install, run:
+```
+npm install -g pokemon-terminal
+```
+2. To select theme:
+```
+pokemon <pokemon-name>
+```
+3. To remove theme:
+```
+pokemon --clear
+```
+The game will alternate themes, depending on which Pokemon is attacking & will clear when the game is initially started
 
 ## Run Game
 
