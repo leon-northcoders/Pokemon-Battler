@@ -29,3 +29,6 @@ To play the game:
 ```
 npm run game
 ```
+
+## Author
+### [leondelaimy](https://github.com/leondelaimy)
